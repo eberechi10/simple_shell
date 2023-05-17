@@ -246,7 +246,3 @@ int sub_string(char **old, char *new);
 /**the shell project**/
 
 #endif
-
-
-
-
