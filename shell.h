@@ -43,7 +43,7 @@ typedef struct NodeLIST
 #define COUNT_WORD_MX 100
 #define BUFFER_ONE -1
 #define LINE_ORI 0
-#define LINE_OR 1````
+#define LINE_OR 1
 #define LINE_AND 2
 #define LINE_CHAIN 3
 #define CONV_LOWER_CHAR 1
@@ -132,7 +132,7 @@ int hold_help(shell_info *info);
 int unset_alias(shell_info *info, char *str);
 int set_alias(shell_info *info, char *str);
 int print_alias(shell_list *node);
-int handle_alias(shell_info *info);
+int hold_alias(shell_info *info);
 int change_alias(shell_info *info);
 
 /*4******ssh_count_word******/
@@ -149,7 +149,7 @@ void get_error(shell_info *info, char *estr);
 void hold_comment(char *buf);
 int print_dec(int input, int fd);
 int err_num(char *s);
-char *sub_base;
+char *sub_base(long int num, int base, int flags);
 
 /*7******ssh_getenv1******/
 int _setenv(shell_info *info, char *var, char *value);
@@ -221,32 +221,33 @@ int len_str(char *str);
 int cmp_str(char *str1, char *str2);
 char *starts_with(const char *haystack, const char *needle);
 
-/*19******ssh_string2******/
-char *_strchr(char *str, char ch);
+/*19******ssh_string1******/
+char *str_char(char *str, char ch);
 char *cpystr_n(char *dest, char *src, int n);
 char *catstr_n(char *str1, char *str2, int n);
 
-/*20******ssh_strtoken******/
-char **strtow(char *str, char *del);
-char **str_split(char *str, char *del, size_t *count_w);
+/*20*****ssh_string2*******/
+int _putchar(char c);
+char *cpy_str(char *dest, char *src);
+void _puts(char *str);
+char *dup_str(const char *str);
 
-/*21******ssh_utils******/
+/*21******ssh_strtoken******/
+char **strtow(char *str, char *d);
+char **str_split(char *str, char del);
+
+/*22******ssh_utils******/
 bool is_delimiter(char c, char *del);
 int _isalpha(int c);
 int _atoi(char *str);
 int my_cmd(shell_info *info);
 
-/*22******ssh_vars******/
+/*23******ssh_vars******/
 int sub_vars(shell_info *info);
 bool is_chain(shell_info *info, char *buf, size_t *ptr);
-void check_chain(shell_info *info, char *buf, size_t *ptr, size_t index, size_t len);
-int sub_string(char **old, char *new);
-
+void check_chain(shell_info *info, char *buf, size_t *p, size_t i, size_t len);
+int sub_string(char **prev, char *cur);
 
 /**the shell project**/
 
 #endif
-
-
-
-
