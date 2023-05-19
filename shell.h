@@ -61,16 +61,19 @@ typedef struct NodeLIST
  * @argv: it is a strings from arg.
  * @path: it is the current commend path string.
  * @argc: it is the count of the arguments
+ *
  * @count_lines: the count of errors.
  * @code_er: it is the error code for the exit().
  * @counter_flag: it show the input line to be counted.
  * @name_file: it is the name of the file
+ *
  * @env: a local copy of linked list in the environment.
  * @environ: custom-modified environ from the linked list environ.
  * @history: the node for history.
  * @alias: the node for alias
- * @changed_env: show when environ changed
+ * @env_sub: show when environ changed
  * @status: status of most recent executed command.
+ *
  * @sh_buf: holds address of pointer to sh_buf for chaining
  * @sh_buf_type: the buffer commend type CMD_type ||, &&, ;
  * @read_fdes: it is the file descriptor for reading line input
@@ -84,14 +87,16 @@ typedef struct NodeINFO
 	char *path;
 	int argc;
 	size_t count_lines;
+
 	int code_er;
 	int counter_flag;
 	char *name_file;
+
 	shell_list *env;
 	shell_list *history;
 	shell_list *alias;
 	char **environ;
-	int changed_env;
+	int env_sub;
 	int status;
 
 	char **sh_buf;
@@ -103,6 +108,7 @@ typedef struct NodeINFO
 
 /**
  * struct builtin - it holds a builtin string and function.
+ *
  * @type: it is the builtin command flag.
  * @func: it is the function
  */
@@ -133,7 +139,7 @@ int unset_alias(shell_info *info, char *str);
 int set_alias(shell_info *info, char *str);
 int print_alias(shell_list *node);
 int hold_alias(shell_info *info);
-int change_alias(shell_info *info);
+int sub_alias(shell_info *info);
 
 /*4******ssh_count_word******/
 int count_word(char *str, char *del, unsigned int *array);
@@ -147,8 +153,8 @@ int put_str(char c, int fd);
 /*6******ssh-errors1******/
 void get_error(shell_info *info, char *estr);
 void hold_comment(char *buf);
-int print_dec(int input, int fd);
-int err_num(char *s);
+int hold_dec(int input, int fd);
+int _errbin(char *s);
 char *sub_base(long int num, int base, int flags);
 
 /*7******ssh_getenv1******/
