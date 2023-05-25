@@ -115,8 +115,8 @@ typedef struct NodeINFO
 
 typedef struct builtin
 {
-        char *type;
-        int (*func)(shell_info *);
+	char *type;
+	int (*func)(shell_info *);
 } builtin_cmds;
 
 

@@ -30,7 +30,7 @@ char **strtow(char *str, char *d)
 		while (is_delimiter(str[p], d))
 			p++;
 		k = 0;
-		while (!is_delimiter(str[p + k], d) && str[ + k])
+		while (!is_delimiter(str[p + k], d) && str[p + k])
 			k++;
 		sto[c] = malloc((k + 1) * sizeof(char));
 		if (!sto[c])
