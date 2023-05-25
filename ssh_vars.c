@@ -92,6 +92,7 @@ bool is_chain(shell_info *info, char *buf, size_t *ptr)
  * check_chain - it checks to continue chaining pending last status
  * @info: it the holds parameter
  * @buf: holds the char buffer
+ * @i: it holds a parameter.
  *
  * @p: it is the addr in buffer of current position.
  * @len: the length of the buffer
@@ -126,8 +127,8 @@ void check_chain(shell_info *info, char *buf, size_t *p, size_t i, size_t len)
 /**
  * sub_string - a function to replace a string.
  *
- * @old: address of old string
- * @new: the new string
+ * @prev: address of old string
+ * @cur: the new string
  *
  * Return: if success 1, 0 otherwise
  */
