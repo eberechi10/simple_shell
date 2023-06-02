@@ -8,9 +8,9 @@
  * @arc: it is the argument vector.
  * Return: if 0 success, otherwise 1
  */
-int main(int arc, char **arv)
+int main(int argc, char **argv)
 {
-	shell_info info[] = {INFO_S};
+	shell_info info[] = { INFO_S };
 	int fdes;
 
 	fdes = 2;
@@ -20,10 +20,10 @@ int main(int arc, char **arv)
 			: "=r"(fdes)
 			: "r"(fdes));
 
-	if (arc == 2)
+	if (argc == 2)
 
 	{
-		fdes = open(arv[1], O_RDONLY);
+		fdes = open(argv[1], O_RDONLY);
 
 		if (fdes == -1)
 		{
@@ -31,9 +31,9 @@ int main(int arc, char **arv)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				puts_ssh(arv[0]);
+				puts_ssh(argv[0]);
 				puts_ssh(": 0: Can't open ");
-				puts_ssh(arv[1]);
+				puts_ssh(argv[1]);
 				putchar_ssh('\n');
 				putchar_ssh(BUFFER_ONE);
 				exit(127);
@@ -44,7 +44,7 @@ int main(int arc, char **arv)
 	}
 	occupy_env(info);
 	scan_history(info);
-	ssh_main(info, arv);
+	ssh_main(info, argv);
 
 	return (EXIT_SUCCESS);
 }
