@@ -15,7 +15,7 @@ void fork_process(shell_info *info)
 	ch_pid = fork();
 	if (ch_pid == -1)
 	{
-		/* TODO: INSERT ERROR FUNCTION */
+		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -28,7 +28,7 @@ void fork_process(shell_info *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: INSERT ERROR FUNCTION */
+		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
@@ -37,7 +37,7 @@ void fork_process(shell_info *info)
 		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)
-				get_error(info, "Permission is denied\n");
+				get_error(info, "Permission denied\n");
 		}
 	}
 }
@@ -158,9 +158,9 @@ void view_command(shell_info *info)
 			fork_process(info);
 		else if (*(info->arg) != '\n')
 		{
+
 			info->status = 127;
-			get_error(info, "Not Found\n");
+			get_error(info, "not found\n");
 		}
 	}
-
 }

@@ -100,4 +100,3 @@ char *dup_str(const char *str)
 		s[i] = *--str;
 	return (s);
 }
-
